@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { EditpdgPage } from '../editpdg/editpdg';
-import { ToppdgPage } from '../toppdg/toppdg';
-import { BuypromoPage } from '../buypromo/buypromo';
+import { DetailPage } from '../detail/detail';
+import { TopupPage } from '../topup/topup';
+import { RegmerPage } from '../regmer/regmer';
+import {Segment} from 'ionic-angular';
 
 /**
- * Generated class for the ProfpdgPage page.
+ * Generated class for the ProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,19 +14,20 @@ import { BuypromoPage } from '../buypromo/buypromo';
 
 @IonicPage()
 @Component({
-  selector: 'page-profpdg',
-  templateUrl: 'profpdg.html',
+  selector: 'page-profile',
+  templateUrl: 'profile.html',
 })
-export class ProfpdgPage {
+export class ProfilePage {
 
-  tab1Root = EditpdgPage;
-  tab2Root = ToppdgPage;
-  tab3Root = BuypromoPage;
+  tab1Root = DetailPage;
+  tab2Root = TopupPage;
+  tab3Root = RegmerPage;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfpdgPage');
+    console.log('ionViewDidLoad ProfilePage');
   }
 
 }
