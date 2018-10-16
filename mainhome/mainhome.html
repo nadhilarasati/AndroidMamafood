@@ -5,51 +5,134 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  
-  <ion-toolbar>
-      <ion-navbar>
-          <ion-title style="text-align: center">Home</ion-title> 
-      </ion-navbar>
-      <button ion-button menuToggle icon-only>
-        <ion-icon name='menu'></ion-icon>
-      </button>
-    </ion-toolbar>
+  <ion-navbar color="navbar">
+    <div text-center>
+    <img src="../../assets/imgs/logomh.svg" style="width: 200px; height: 40px;">
+  </div>
+  </ion-navbar>
 </ion-header>
+<ion-content class="promo">
+  <div class="backpromo">
+  <ion-slides autoplay="3000" loop="true" speed="800" pager="true">
+    <ion-slide>
+      <img src="../../assets/imgs/promo/promo1.jpg"/>
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/imgs/promo/promo2.jpg"/>
+    </ion-slide>
+    <ion-slide>
+      <img src="../../assets/imgs/promo/promo3.jpg"/>
+    </ion-slide>  
+  </ion-slides>
+</div> 
 
-<ion-content padding>
-  <ion-searchbar>
 
-  </ion-searchbar>
-
-  <button ion-button [navPush]= "orderButton">Order</button>
+  <div class="card-background-page">
+      <ion-grid>
+        <ion-card>
+          <ion-title text-left style="margin-top:10px">Rekomendasi:</ion-title>
+          <ion-scroll scrollX="true" style="width:100%; height: 80px"> 
+            <ion-slides spaceBetween="-45">
+              <ion-slide>
+                <div class="inner">
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/daging.jpg"/>
+                    <div class="card-title">DAGING</div>
+                  </ion-card>
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/ikan.jpg"/>
+                    <div class="card-title">IKAN</div>
+                  </ion-card>
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/soup.jpg"/>
+                    <div class="card-title">SOUP</div>
+                  </ion-card>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="inner">
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/mie.jpg"/>
+                    <div class="card-title">MIE</div>
+                  </ion-card>    
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/sayur.jpg"/>
+                    <div class="card-title">SAYUR</div>
+                  </ion-card>
+                    <ion-card [navPush]="DagingButton">
+                      <img src="../../assets/imgs/background/menumainhome/nasi.jpg"/>
+                      <div class="card-title">NASI</div>
+                  </ion-card>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-scroll>
+          
+          
+          <ion-title text-left style="margin-top:10px">Sedang Tren:</ion-title>
+          <ion-scroll scrollX="true" style="width:100%; height: 100px"> 
+            <ion-slides spaceBetween="-45">
+              <ion-slide>
+                <div class="inner">
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/daging.jpg"/>
+                    <div class="card-title">DAGING</div>
+                  </ion-card>
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/ikan.jpg"/>
+                    <div class="card-title">IKAN</div>
+                  </ion-card>
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/soup.jpg"/>
+                    <div class="card-title">SOUP</div>
+                  </ion-card>
+                </div>
+              </ion-slide>
+              <ion-slide>
+                <div class="inner">
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/mie.jpg"/>
+                    <div class="card-title">MIE</div>
+                  </ion-card>    
+                  <ion-card [navPush]="DagingButton">
+                    <img src="../../assets/imgs/background/menumainhome/sayur.jpg"/>
+                    <div class="card-title">SAYUR</div>
+                  </ion-card>
+                    <ion-card [navPush]="DagingButton">
+                      <img src="../../assets/imgs/background/menumainhome/nasi.jpg"/>
+                      <div class="card-title">NASI</div>
+                  </ion-card>
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-scroll>
+        </ion-card>
+      </ion-grid>
+    </div>
+    
+    <!-- <div class="menutama">
+        <ion-grid>
+          <ion-card>
+            <ion-row>
+              <ion-col>
+                1 of 3
+              </ion-col>
+              <ion-col>
+                2 of 3
+              </ion-col>
+              <ion-col>
+                3 of 3
+              </ion-col>
+              <ion-col>
+                  3 of 3
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-grid>
+    </div> -->
 </ion-content>
 
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-navbar>
-        <ion-title>Menu</ion-title>
-    </ion-navbar>
-    
-  </ion-header>
-  <ion-content>
-      <ion-list>
-          <button ion-item (click)="openPage(DagingPage)">
-            Daging
-          </button>
-          <button ion-item>
-            Ikan
-          </button>
-          <button ion-item>
-            Sayur
-          </button>
-          <button ion-item>
-            Tradisional
-          </button>
-          <button ion-item>
-            Pencuci Mulut
-          </button>
-      </ion-list>
-  </ion-content>
-</ion-menu>
+
+
 
 <ion-nav #content [root]="rootPage"></ion-nav>
