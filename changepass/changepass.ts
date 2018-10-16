@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { DH_NOT_SUITABLE_GENERATOR } from 'constants';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the ChangepassPage page.
@@ -11,26 +14,45 @@ import { DH_NOT_SUITABLE_GENERATOR } from 'constants';
 
 @IonicPage()
 @Component({
-  selector: 'page-changepass',
-  templateUrl: 'changepass.html',
+  selector: 'page-edit',
+  templateUrl: 'edit.html',
 })
-export class ChangepassPage {
+export class EditPage {
+  nama: String;
+  email: String;
+  noTelpon: String;
+  Alamat: String;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alerCtrl: AlertController) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private view: ViewController, public http: HttpClient, public storage: Storage) {
     
   }
 
-  doAlert(){
-    let alert = this.alerCtrl.create({
-      title: 'Success!!',
-      message: 'Your password is successfully changed!',
-      buttons: ['OK']
-    });
-    alert.present()
-  }
+  
+
+  
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChangepassPage');
+    this.storage.get('token').then(val => {
+      let res: Observable<any> = this.http.get('http://mamafood.com/api/token',{
+        headers: {
+          Authorization : val
+        }
+      })
+      res.subscribe(data => {
+        this.nama = data.nama;
+        this.email = data.email;
+        this.noTelpon = data.noTelpon;
+      })
+    }).catch(data => {
+      console.log(data)
+    });;
   }
+
+  closeModal(){
+    this.view.dismiss();
+  }
+
+  
 
 }
