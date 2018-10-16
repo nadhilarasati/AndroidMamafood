@@ -7,21 +7,46 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title style="text-align: center">Home</ion-title>
+    <ion-title>homepdg</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-card>
-    <img width="80" height="150S" src="../../assets/imgs/rendang.jpg">
-    <ion-list>
-      <ion-label>Rendang</ion-label>
-      <ion-label>Olahan daging dengan menggunakan bumbu rempah pilihan</ion-label>
-      <ion-label>Rp 12.000/porsi</ion-label>
-    </ion-list>
-    <button ion-button>Edit</button>
-  </ion-card>
-  <button ion-button [navPush]="addButton">Add Menu</button>
+    <ion-card  *ngFor="let menu of menus">
+      <div class="menupdg">
+        <img width="80" height="150S" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' +  menu.fotoMenu)">
+        <ion-list>
+          <ion-label>{{menu.namaMenu}}</ion-label>
+          <ion-label>{{menu.deskripsiMenu}}</ion-label>
+          <ion-label>Rp {{menu.hargaMenu}}/porsi</ion-label>
+        </ion-list>
+      </div>
+      </ion-card>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nama Menu</ion-label>
+      <ion-input type="text" [(ngModel)]="namaMenu"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label stacked>Harga Menu</ion-label>
+      <ion-input type="text" [(ngModel)]="hargaMenu"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Deskripsi Menu</ion-label>
+      <ion-input type="text" [(ngModel)]="deskripsiMenu"></ion-input>
+    </ion-item>
+  
+    
+      <ion-label stacked>Upload Menu</ion-label>
+      <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
+      <button ion-button (click)="presentActionSheet()" color="gray">Upload</button>
+      <button ion-button (click)="uploadImage()" color="gray">Submit</button>
+    
+  
+  </ion-list>
 </ion-content>
