@@ -1,0 +1,58 @@
+<!--
+  Generated template for the OrdermenuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ordermenu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <ion-list>
+    <ion-item>
+        <ion-label>Pre-Order</ion-label>
+        <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Pick the Date</ion-label>
+        <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="myDate"></ion-datetime>
+      </ion-item>
+    
+    <ion-item>
+        <ion-label>Rendang</ion-label>
+        
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Jumlah</ion-label>
+        <ion-select okText="Okay" cancelText="Dismiss"[(ngModel)]="jml">
+          <ion-option value="1">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+          <ion-option value="4">4</ion-option>
+          <ion-option value="5">5</ion-option>
+          <ion-option value="6">6</ion-option>
+          <ion-option value="7">7</ion-option>
+          <ion-option value="8">8</ion-option>
+          <ion-option value="9">9</ion-option>
+          <ion-option value="10">10</ion-option>
+        </ion-select>
+  </ion-item>
+
+  <ion-item>
+      <ion-input type="text" placeholder="Add note"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <button ion-button [navPush]= "nextButton">Next</button>
+
+</ion-content>
