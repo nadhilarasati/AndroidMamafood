@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, MenuController, Nav } from 'ionic-angular';
-import { OrdermenuPage } from '../ordermenu/ordermenu';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NotificationPage } from '../notification/notification';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Storage } from '@ionic/storage';
 
 
 /**
@@ -17,16 +20,33 @@ import { OrdermenuPage } from '../ordermenu/ordermenu';
 })
 export class MainhomePage {
 
-  orderButton: any;
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, app: App, menu: MenuController) {
-    menu.enable(true);
-    this.orderButton= OrdermenuPage;
+ 
+
+  DagingButton: any;
+  email: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public storage: Storage) {
+    this.DagingButton = NotificationPage;
   }
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MainhomePage');
+    this.storage.get('token').then(val => {
+      let res: Observable<any> = this.http.get('http://mamafood.com/api/login',{
+        headers: {
+          Authorization : val
+        }
+      })
+      res.subscribe(data => {
+        this.email = data.email;
+      })
+    }).catch(data => {
+      console.log(data)
+    });;
+    
+    
+    
+    //console.log('ionViewDidLoad MainhomePage');
   }
+
 
 }
